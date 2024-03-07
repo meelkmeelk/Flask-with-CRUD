@@ -5,5 +5,6 @@ To install necessary packages:
   2. Copy and paste the contents of the "requirements.txt" file in this repository into your own
   3. Open your terminal and type: pip install -r requirements.txt
 
-Completed Application @ https://replit.com/@TeoHean1/personalwebsite
+Completed Replit Application @ https://replit.com/@TeoHean1/personalwebsite just need to add your database link
+Launched application on render @ https://flask-with-crud-prv.onrender.com/
      

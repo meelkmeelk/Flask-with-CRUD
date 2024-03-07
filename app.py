@@ -4,7 +4,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to your desired secret key
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://teoheanyikofficial:nQISbi3W9mvk@ep-tiny-dust-a1kdok7k.ap-southeast-1.aws.neon.tech/personal_website?sslmode=require'
+app.config['SQLALCHEMY_DATABASE_URI'] = ''
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)

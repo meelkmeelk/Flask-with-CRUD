@@ -8,3 +8,4 @@ To install necessary packages:
 Completed Replit Application @ https://replit.com/@TeoHean1/personalwebsite just need to add your database link
 Launched application on render @ https://flask-with-crud-prv.onrender.com/
      
+Some simple explanation:

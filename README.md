@@ -35,3 +35,63 @@ SQLAlchemy(app): You're telling SQLAlchemy that it's going to work inside your F
 Imagine that the context is still a library, but a private one, people need to prove that they are allowed to enter.
 LoginManager() is someone that controls who enters the library, basically it will authenticate the person.
 Creating an object with is like hiring a librarian to control who comes in the library
+
+6. db.Column is the columns of a table.
+   db.Column(data_type, options)
+   Data Types:
+   - db.Integer --> 1, 2, 3, 4
+   - db.String(length)
+   - db.Boolean --> True or False
+   - db.Float --> 0.9398593
+   - db.Date
+   - db.ForeignKey(Column) --> Represents a foreign key relationship with another column in a different table
+   Note: Foreign key is a way of linking of two tables through the use of a unique ID, etc. For example, our project needs to assign the 'tasks' created by the user to the specific user_id so that when we load the task page, the user can see what he or she has uploaded.
+  Options:
+- primary_key: Indicates whether the column is a primary key for the table.
+- unique: Specifies that the values in the column must be unique across all rows in the table.
+- nullable: Indicates whether the column can contain null values (i.e., empty or missing values).
+- default: Specifies a default value for the column if no value is provided during insertion.
+- index: Creates an index on the column, which can improve query performance.
+- autoincrement: Indicates whether the column should automatically increment its value for each new row added to the table. This is typically used with integer primary key columns.
+- foreign_key: Defines a foreign key constraint for the column, linking it to a column in another table.
+- ondelete: Specifies the action to take when the referenced row in the parent table is deleted. Common options include 'CASCADE', 'SET NULL', and 'RESTRICT'.
+- onupdate: Specifies the action to take when the referenced row in the parent table is updated.
+- comment: Adds a comment to the column, which can be helpful for documenting the purpose of the column.
+
+  What about lazy=True?
+  - Setting lazy=True in SQLAlchemy means data related to a particular object is loaded from the database only when you specifically ask for it, not automatically when you retrieve the main object. This saves time and resources by fetching data only when needed.
+
+  7. @login_manager.user_loader
+     def load_user(user_id):
+      return User.query.get(int(user_id))
+     @login_manager.user_loader is a decorator used to tell Flask-Login how to load a user from the database based on their unique identifier, in this case the user_id.
+
+  8. @app.route('/')
+     Flask creates a route for the root URL '/'. When a user visits this URL, the associated function is called to handle the request. Your functioos can be like return redirect(url_for('login')) --> Means that when you go to the root it will redirect you to the login page.
+
+  9. Why url_for('') do not need to include things like where is the .html file located at and the name, instead just the name of the .html file without the .html?
+     In Flask, the url_for() function is used to generate URLs for routes defined in your application. When you provide the name of the function that corresponds to a route, Flask automatically determines the URL associated with that route based on the route's name.
+
+  10. Why can I not include the file location and the render_template function still works?
+      In Flask, the render_template() function is used to render HTML templates. When you call render_template() and provide the name of the template file, Flask automatically looks for the template file within a predefined directory structure.
+
+  11. Database functions
+   - db.session.add()
+   - db.session.delete()
+   - db.session.commit()
+   - tableName.query.get()
+ 
+  12. with app.app_context():
+      You are in a library filled with books
+      Each bookshelf represents a different part of the library each book on the shelf contains valuable information
+      
+      Let's say you want to consult a specific book
+      Before you can do that, you need to enter the library and locate the bookshelf where the book is located
+      Once you're in the right section of the library
+      You can easily find and access the book you need
+      
+      The library represents the Flask application
+      Each bookshelf represents a different component of the application such as routes, models or templates
+      The books on the shelf represent the resources or functionalitites 
+      Entering the library and locating the correct bookshelf corresponds to using app.app_context()
+      Once inside the application context you have access to all the components and easily find and interact with resources you need

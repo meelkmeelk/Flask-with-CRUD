@@ -61,27 +61,26 @@ Creating an object with is like hiring a librarian to control who comes in the l
   What about lazy=True?
   - Setting lazy=True in SQLAlchemy means data related to a particular object is loaded from the database only when you specifically ask for it, not automatically when you retrieve the main object. This saves time and resources by fetching data only when needed.
 
-  7. @login_manager.user_loader
+7. @login_manager.user_loader
      def load_user(user_id):
       return User.query.get(int(user_id))
      @login_manager.user_loader is a decorator used to tell Flask-Login how to load a user from the database based on their unique identifier, in this case the user_id.
 
-  8. @app.route('/')
+8. @app.route('/')
      Flask creates a route for the root URL '/'. When a user visits this URL, the associated function is called to handle the request. Your functioos can be like return redirect(url_for('login')) --> Means that when you go to the root it will redirect you to the login page.
 
-  9. Why url_for('') do not need to include things like where is the .html file located at and the name, instead just the name of the .html file without the .html?
+9. Why url_for('') do not need to include things like where is the .html file located at and the name, instead just the name of the .html file without the .html?
      In Flask, the url_for() function is used to generate URLs for routes defined in your application. When you provide the name of the function that corresponds to a route, Flask automatically determines the URL associated with that route based on the route's name.
 
-  10. Why can I not include the file location and the render_template function still works?
+10. Why can I not include the file location and the render_template function still works?
       In Flask, the render_template() function is used to render HTML templates. When you call render_template() and provide the name of the template file, Flask automatically looks for the template file within a predefined directory structure.
 
-  11. Database functions
+11. Database functions
    - db.session.add()
    - db.session.delete()
    - db.session.commit()
    - tableName.query.get()
- 
-  12. with app.app_context():
+12. with app.app_context():
       You are in a library filled with books
       Each bookshelf represents a different part of the library each book on the shelf contains valuable information
       
